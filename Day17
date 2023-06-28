@@ -5,7 +5,7 @@
 public:
     ListNode* removeElements(ListNode* head, int val)
     {   
-        while(head != NULL && head->val == val) // if all the elements are same
+        while(head != NULL && head->val == val) 
         {
             head = head->next;
         }
@@ -16,7 +16,7 @@ public:
         ListNode* pointer;
         pointer = head;
 
-        while (pointer->next != NULL)  // removing ftom middle of the linked list
+        while (pointer->next != NULL)  
         {
             if(pointer->next->val == val)
             {
