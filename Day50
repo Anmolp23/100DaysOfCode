@@ -1,0 +1,21 @@
+//LEETCODE---->1721------>Swapping Nodes in a Linked List
+
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+
+        while(--k){
+            fast=fast->next;
+        }
+        ListNode *first=fast;
+        while(fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next;
+        }
+
+        swap(first->val,slow->val);
+        return head;
+    }
+};
