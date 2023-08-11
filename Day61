@@ -1,0 +1,42 @@
+//LEETCODE--->113-->path sum 2
+
+class Solution {
+public:
+void solve(TreeNode* root,int targetsum,int &currsum,vector<int> &path, vector<vector<int> > &ans){
+    if(root==NULL)
+    return;
+
+    
+    if(root->left==NULL && root->right==NULL){
+       
+        path.push_back(root->val);
+        currsum+=root->val;
+       
+        if(currsum==targetsum){
+        ans.push_back(path);
+    }
+    //exclude
+    path.pop_back();
+    currsum-=root->val;
+    return;
+    }
+
+    //include curr node
+    path.push_back(root->val);
+    currsum+=root->val;
+solve(root->left,targetsum,currsum,path,ans);
+solve(root->right,targetsum,currsum,path,ans);
+
+//backtrack
+path.pop_back();
+currsum-=root->val;
+
+}
+    vector<vector<int>> pathSum(TreeNode* root, int targetsum) {
+       vector<vector<int>>ans;
+       int sum=0;
+       vector<int>temp;
+       solve(root,targetsum,sum,temp,ans);
+       return ans;
+    }
+};
