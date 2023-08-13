@@ -1,0 +1,22 @@
+//LEETCODE----->
+
+class Solution {
+public:
+int ans=0;
+void pathfromoneRoot(TreeNode* root,long long sum){
+    if(!root)
+    return;
+    if(sum==root->val)
+    ++ans;
+    pathfromoneRoot(root->left,sum-root->val);
+    pathfromoneRoot(root->right,sum-root->val);
+}
+    int pathSum(TreeNode* root, long long targetSum) {
+        if(root){
+    pathfromoneRoot(root,targetSum);
+    pathSum(root->left,targetSum);
+    pathSum(root->right,targetSum);  
+        }
+        return ans;
+    }
+};
