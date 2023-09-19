@@ -1,0 +1,21 @@
+//LEETCODE----->2085. Count Common Words With One Occurrence
+
+class Solution {
+public:
+    int countWords(vector<string>& words1, vector<string>& words2) {
+        int count=0;
+        unordered_map<string,int>umap;
+        unordered_map<string,int>umap2;
+        for(int i=0;i<words1.size();i++){
+             umap[words1[i]]++; 
+        }
+        for(int i=0;i<words2.size();i++){
+             umap2[words2[i]]++; 
+        }
+        for(auto x:umap){
+            if(x.second==1 && umap2.find(x.first)!=umap.end() && umap2[x.first]==1)
+             count++;
+        }
+        return count;
+    }
+};
